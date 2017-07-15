@@ -1,4 +1,5 @@
 #include "ray.h"
+#include "local.h"
 #include "platform.h"
  
 #include <math.h>

@@ -1,9 +1,6 @@
 #ifndef _RAY_H_
 #define _RAY_H_
 
-// 64 bit unsigned integer
-#include <stdint.h>
-
 // AVX2 + FMA Intrinsics
 #include <immintrin.h>
 
