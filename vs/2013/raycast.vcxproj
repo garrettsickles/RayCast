@@ -19,11 +19,12 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\include\local.h" />
+    <ClInclude Include="..\..\include\implementation.h" />
     <ClInclude Include="..\..\include\raycast.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\sphere.c" />
+    <ClCompile Include="..\..\src\triangle.c" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{DAF24A9F-1EB1-4248-9330-6680AA62A9C6}</ProjectGuid>
@@ -95,7 +96,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>WIN64;_MBCS;_CRT_SECURE_NO_WARNINGS;_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN64;_MBCS;_CRT_SECURE_NO_WARNINGS;RAYCAST_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <CompileAs>CompileAsC</CompileAs>
       <AdditionalIncludeDirectories>..\..\include</AdditionalIncludeDirectories>
       <EnableEnhancedInstructionSet>AdvancedVectorExtensions2</EnableEnhancedInstructionSet>
@@ -130,7 +131,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>WIN64;_MBCS;_CRT_SECURE_NO_WARNINGS;_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN64;_MBCS;_CRT_SECURE_NO_WARNINGS;RAYCAST_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <CompileAs>CompileAsC</CompileAs>
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
       <AdditionalIncludeDirectories>..\..\include</AdditionalIncludeDirectories>

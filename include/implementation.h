@@ -1,6 +1,9 @@
-#ifndef _LOCAL_H_
-#define _LOCAL_H_
+#ifndef _IMPLEMENTATION_H_
+#define _IMPLEMENTATION_H_
 
+#include "raycast.h"
+ 
+#include <math.h>
 #include <stdint.h>
 
 // No Intersection array (NaN, NaN, NaN, Infinity)

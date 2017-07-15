@@ -21,7 +21,7 @@ void sphere_test()
 
 	printf
 	(
-		LITERAL(RAY_INTO_SPHERE)
+		RAYCAST_LITERAL(RAY_INTO_SPHERE)
 		"\n"
 	);
 
