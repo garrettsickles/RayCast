@@ -16,7 +16,8 @@
 #define LITERAL(x) STRINGIFY(x)
 
 // Function builder
-#define RAYCAST_API(fn) extern Vector4 fn
+#define RAYCAST_IMPL(fn) Vector4 fn
+#define RAYCAST_API(fn) extern RAYCAST_IMPL(fn)
 
 // Function list
 #define RAY_INTO_SPHERE RayIntoSphere

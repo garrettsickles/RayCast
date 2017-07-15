@@ -3,7 +3,7 @@
  
 #include <math.h>
 
-Vector4 RayIntoSphere(Vector4 origin, Vector4 direction, Vector4 sphere)
+RAYCAST_IMPL(RAY_INTO_SPHERE)(Vector4 origin, Vector4 direction, Vector4 sphere)
 {
 	double a, b, c, discriminant, time;
 	Vector4 displacement, av, bv, cv, dv, intersection;
