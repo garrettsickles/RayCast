@@ -8,6 +8,8 @@
 #define EPSILON 0.0000001
 #define EQUALS(a,b) (fabs(a - b) < EPSILON)
 
+static int success = 1;
+
 void sphere_test()
 {
 	// Test Sphere
@@ -47,15 +49,18 @@ void sphere_test()
 			X(intersection), Y(intersection), Z(intersection), T(intersection)
 		);
 
+		const int succeeded =
+			X(intersection) != X(intersection) &&
+			Y(intersection) != Y(intersection) &&
+			Z(intersection) != Z(intersection) &&
+			T(intersection) == INFINITY;
+
+		success = success && succeeded;
+
 		printf
 		(
 			"        Result:       %s\n",
-			(
-				X(intersection) != X(intersection) &&
-				Y(intersection) != Y(intersection) &&
-				Z(intersection) != Z(intersection) &&
-				T(intersection) == INFINITY
-			) ? "SUCCESS" : "FAILURE"
+			succeeded ? "SUCCESS" : "FAILURE"
 		);
 	}
 
@@ -81,20 +86,22 @@ void sphere_test()
 			X(intersection), Y(intersection), Z(intersection), T(intersection)
 		);
 
+		const int succeeded =
+			EQUALS(X(intersection),  65.785348504950051) &&
+			EQUALS(Y(intersection), -38.141394019800231) &&
+			EQUALS(Z(intersection),  89.502560465349603) &&
+			EQUALS(T(intersection),  0.78534850495005726);
+
+		success = success && succeeded;
+
 		printf
 		(
 			"        Result:       %s\n",
-			(
-				EQUALS(X(intersection),  65.785348504950051) &&
-				EQUALS(Y(intersection), -38.141394019800231) &&
-				EQUALS(Z(intersection),  89.502560465349603) &&
-				EQUALS(T(intersection),  0.78534850495005726)
-			) ? "SUCCESS" : "FAILURE"
+			succeeded ? "SUCCESS" : "FAILURE"
 		);
-
 	}
 
-	// Ray Pierces Sphere
+	// Ray Outside Sphere
 	{
 		const Vector4 origin    = { 70.0, -40.0, 100.0 };
 		const Vector4 direction = {  -5.0,  4.0,  -7.0 };
@@ -116,15 +123,18 @@ void sphere_test()
 			X(intersection), Y(intersection), Z(intersection), T(intersection)
 		);
 
+		const int succeeded =
+			EQUALS(X(intersection),  65.954332159489638) &&
+			EQUALS(Y(intersection), -36.763465727591708) &&
+			EQUALS(Z(intersection),  94.336065023285499) &&
+			EQUALS(T(intersection),  0.80913356810207249);
+
+		success = success && succeeded;
+
 		printf
 		(
 			"        Result:       %s\n",
-			(
-				EQUALS(X(intersection),  65.954332159489638) &&
-				EQUALS(Y(intersection), -36.763465727591708) &&
-				EQUALS(Z(intersection),  94.336065023285499) &&
-				EQUALS(T(intersection),  0.80913356810207249)
-			) ? "SUCCESS" : "FAILURE"
+			succeeded ? "SUCCESS" : "FAILURE"
 		);
 
 	}
@@ -134,5 +144,5 @@ int main()
 {
 	// Sphere Test
 	sphere_test();
-	return 0;
+	return success ? 0 : -1;
 }
