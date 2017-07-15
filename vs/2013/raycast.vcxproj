@@ -20,11 +20,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\include\local.h" />
-    <ClInclude Include="..\..\include\platform.h" />
-    <ClInclude Include="..\..\include\ray.h" />
+    <ClInclude Include="..\..\include\raycast.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\src\ray.c" />
     <ClCompile Include="..\..\src\sphere.c" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

@@ -1,10 +1,9 @@
-#include "ray.h"
+#include "raycast.h"
 #include "local.h"
-#include "platform.h"
  
 #include <math.h>
 
-RAYCAST_IMPL(RAY_INTO_SPHERE)(Vector4 origin, Vector4 direction, Vector4 sphere)
+RAYCAST_FUNCTION(RAY_INTO_SPHERE)(Vector4 origin, Vector4 direction, Vector4 sphere)
 {
 	double a, b, c, discriminant, time;
 	Vector4 displacement, av, bv, cv, dv, intersection;

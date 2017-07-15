@@ -9,20 +9,14 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\include\ray.h">
-      <Filter>include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\include\platform.h">
-      <Filter>include</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\include\local.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\raycast.h">
       <Filter>include</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\src\ray.c">
-      <Filter>src</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\src\sphere.c">
       <Filter>src</Filter>
     </ClCompile>

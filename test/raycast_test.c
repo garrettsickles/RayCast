@@ -1,12 +1,10 @@
-#include <stdio.h>
-
-#include "ray.h"
-#include "platform.h"
+#include "raycast.h"
 
 #include <math.h>
+#include <stdio.h>
 
-#define EPSILON 0.0000001
-#define EQUALS(a,b) (fabs(a - b) < EPSILON)
+#define RAYCAST_EPSILON 0.0000001
+#define RAYCAST_EQUALS(a,b) (fabs(a - b) < RAYCAST_EPSILON)
 
 static int success = 1;
 
@@ -87,10 +85,10 @@ void sphere_test()
 		);
 
 		const int succeeded =
-			EQUALS(X(intersection),  65.785348504950051) &&
-			EQUALS(Y(intersection), -38.141394019800231) &&
-			EQUALS(Z(intersection),  89.502560465349603) &&
-			EQUALS(T(intersection),  0.78534850495005726);
+			RAYCAST_EQUALS(X(intersection),  65.785348504950051) &&
+			RAYCAST_EQUALS(Y(intersection), -38.141394019800231) &&
+			RAYCAST_EQUALS(Z(intersection),  89.502560465349603) &&
+			RAYCAST_EQUALS(T(intersection),  0.78534850495005726);
 
 		success = success && succeeded;
 
@@ -124,10 +122,10 @@ void sphere_test()
 		);
 
 		const int succeeded =
-			EQUALS(X(intersection),  65.954332159489638) &&
-			EQUALS(Y(intersection), -36.763465727591708) &&
-			EQUALS(Z(intersection),  94.336065023285499) &&
-			EQUALS(T(intersection),  0.80913356810207249);
+			RAYCAST_EQUALS(X(intersection),  65.954332159489638) &&
+			RAYCAST_EQUALS(Y(intersection), -36.763465727591708) &&
+			RAYCAST_EQUALS(Z(intersection),  94.336065023285499) &&
+			RAYCAST_EQUALS(T(intersection),  0.80913356810207249);
 
 		success = success && succeeded;
 
