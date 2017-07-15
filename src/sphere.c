@@ -30,7 +30,7 @@ Vector4 RayIntoSphere(Vector4 origin, Vector4 direction, Vector4 sphere)
 	double discriminant = X(dv) - 4.0 * Y(dv);
 
 	// Initialize to invalid intersect
-	Vector4 intersection = _mm256_load_pd((const double*)(NO_INTERSECT));
+	Vector4 intersection = _mm256_load_pd(NO_INTERSECT);
 
 	// Ray misses sphere
 	if (discriminant < 0.0)
