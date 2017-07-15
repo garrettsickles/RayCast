@@ -5,32 +5,37 @@
 
 Vector4 RayIntoSphere(Vector4 origin, Vector4 direction, Vector4 sphere)
 {
-	double time;
+	double a, b, c, discriminant, time;
+	Vector4 displacement, av, bv, cv, dv, intersection;
 
-	// offset = origin - center 
-	Vector4 displacement = _mm256_sub_pd(origin, sphere);
+	// displacement = origin - sphere 
+	displacement =
+		_mm256_sub_pd
+		(
+			origin, sphere
+		);
 
 	// Insert radius into unused displacement parameter
 	T(displacement) = T(sphere);
 
 	// Direction length squared
-	Vector4 av = _mm256_mul_pd(direction, direction);
-	double a = X(av) + Y(av) + Z(av);
+	av = _mm256_mul_pd(direction, direction);
+	a = X(av) + Y(av) + Z(av);
 
 	// Direction (dot) Displacement
-	Vector4 bv = _mm256_mul_pd(direction, displacement);
-	double b = 2.0 * (X(bv) + Y(bv) + Z(bv));
+	bv = _mm256_mul_pd(direction, displacement);
+	b = 2.0 * (X(bv) + Y(bv) + Z(bv));
 
 	// Displacement length squared and radius sqaured
-	Vector4 cv = _mm256_mul_pd(displacement, displacement);
-	double c = X(cv) + Y(cv) + Z(cv) - T(cv);
+	cv = _mm256_mul_pd(displacement, displacement);
+	c = X(cv) + Y(cv) + Z(cv) - T(cv);
 
 	// Discriminant
-	Vector4 dv = _mm256_mul_pd(_mm256_set_pd(a, b, a, b), _mm256_set_pd(2.0, -1.0, c, b));
-	double discriminant = X(dv) - 4.0 * Y(dv);
+	dv = _mm256_mul_pd(_mm256_set_pd(a, b, a, b), _mm256_set_pd(2.0, -1.0, c, b));
+	discriminant = X(dv) - 4.0 * Y(dv);
 
 	// Initialize to invalid intersect
-	Vector4 intersection = _mm256_load_pd(NO_INTERSECT);
+	intersection = _mm256_load_pd(NO_INTERSECT);
 
 	// Ray misses sphere
 	if (discriminant < 0.0)
