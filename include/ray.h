@@ -15,9 +15,16 @@
 #define STRINGIFY(x) #x
 #define LITERAL(x) STRINGIFY(x)
 
+// Shared Object
+#if defined(_MSC_VER) && defined(_DLL)
+	#define SHARED_EXPORT __declspec(dllexport)
+#else
+	#define SHARED_EXPORT
+#endif
+
 // Function builder
 #define RAYCAST_IMPL(fn) Vector4 fn
-#define RAYCAST_API(fn) extern RAYCAST_IMPL(fn)
+#define RAYCAST_API(fn) extern SHARED_EXPORT RAYCAST_IMPL(fn)
 
 // Function list
 #define RAY_INTO_SPHERE RayIntoSphere

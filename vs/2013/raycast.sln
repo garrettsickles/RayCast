@@ -9,16 +9,26 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "raycast_test", "raycast_tes
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug DLL|x64 = Debug DLL|x64
 		Debug|x64 = Debug|x64
+		Release DLL|x64 = Release DLL|x64
 		Release|x64 = Release|x64
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DAF24A9F-1EB1-4248-9330-6680AA62A9C6}.Debug DLL|x64.ActiveCfg = Debug DLL|x64
+		{DAF24A9F-1EB1-4248-9330-6680AA62A9C6}.Debug DLL|x64.Build.0 = Debug DLL|x64
 		{DAF24A9F-1EB1-4248-9330-6680AA62A9C6}.Debug|x64.ActiveCfg = Debug|x64
 		{DAF24A9F-1EB1-4248-9330-6680AA62A9C6}.Debug|x64.Build.0 = Debug|x64
+		{DAF24A9F-1EB1-4248-9330-6680AA62A9C6}.Release DLL|x64.ActiveCfg = Release DLL|x64
+		{DAF24A9F-1EB1-4248-9330-6680AA62A9C6}.Release DLL|x64.Build.0 = Release DLL|x64
 		{DAF24A9F-1EB1-4248-9330-6680AA62A9C6}.Release|x64.ActiveCfg = Release|x64
 		{DAF24A9F-1EB1-4248-9330-6680AA62A9C6}.Release|x64.Build.0 = Release|x64
+		{0448370B-E483-46BE-8CF4-0CAECFE621C5}.Debug DLL|x64.ActiveCfg = Debug DLL|x64
+		{0448370B-E483-46BE-8CF4-0CAECFE621C5}.Debug DLL|x64.Build.0 = Debug DLL|x64
 		{0448370B-E483-46BE-8CF4-0CAECFE621C5}.Debug|x64.ActiveCfg = Debug|x64
 		{0448370B-E483-46BE-8CF4-0CAECFE621C5}.Debug|x64.Build.0 = Debug|x64
+		{0448370B-E483-46BE-8CF4-0CAECFE621C5}.Release DLL|x64.ActiveCfg = Release DLL|x64
+		{0448370B-E483-46BE-8CF4-0CAECFE621C5}.Release DLL|x64.Build.0 = Release DLL|x64
 		{0448370B-E483-46BE-8CF4-0CAECFE621C5}.Release|x64.ActiveCfg = Release|x64
 		{0448370B-E483-46BE-8CF4-0CAECFE621C5}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
