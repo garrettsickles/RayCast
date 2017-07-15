@@ -2,19 +2,16 @@
 #include "platform.h"
  
 #include <math.h>
-#include <stdint.h>
 
-static const uint64_t NO_INTERSECT[4] = { 0x7FF8000000000000, 0x7FF8000000000000, 0x7FF8000000000000, 0x7FF0000000000000 };
-
-Vector4 RayIntoSphere(Vector4 origin, Vector4 direction, Vector4 center, double radius)
+Vector4 RayIntoSphere(Vector4 origin, Vector4 direction, Vector4 sphere)
 {
 	double time;
 
-	// offset = center - origin
-	Vector4 displacement = _mm256_sub_pd(origin, center);
+	// offset = origin - center 
+	Vector4 displacement = _mm256_sub_pd(origin, sphere);
 
 	// Insert radius into unused displacement parameter
-	T(displacement) = radius;
+	T(displacement) = T(sphere);
 
 	// Direction length squared
 	Vector4 av = _mm256_mul_pd(direction, direction);
