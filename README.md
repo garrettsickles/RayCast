@@ -50,11 +50,27 @@ Intersection: <0.577350, 0.577350, 0.577350, 0.422650>
 ### GCC
 Run the makefile located in the `unix/gcc` directory with the parameter `CC` set to the GCC compiler command.
 
+First:
 ```
 cd unix/gcc
+```
+
+From Scratch:
+```
+make rebuild CC=$(COMPILER)
+```
+
+Static/Shared Libs:
+```
+make setup
 make lib CC=$(COMPILER)
+```
+
+Tests:
+```
 make test CC=$(COMPILER)
 ```
+
 where `COMPILER` is at least **`gcc-4.8`** or newer
 
 
