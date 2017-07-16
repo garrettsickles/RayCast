@@ -12,13 +12,7 @@
     <ClInclude Include="..\..\include\raycast.h">
       <Filter>include</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\include\implementation.h">
-      <Filter>include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\include\intrinsic.h">
-      <Filter>include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\include\native.h">
+    <ClInclude Include="..\..\src\implementation.h">
       <Filter>include</Filter>
     </ClInclude>
   </ItemGroup>

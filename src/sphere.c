@@ -1,4 +1,5 @@
 #include "implementation.h"
+#include "raycast.h"
 
 RAYCAST_FUNCTION(RAY_INTO_SPHERE)(Vector4 origin, Vector4 direction, Vector4 sphere)
 {

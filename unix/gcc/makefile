@@ -1,84 +1,73 @@
 # Name
-TARGET    = raycast
-TEST      = $(TARGET)_test
-NIXTARGET = lib$(TARGET)
-
-# Compiler
-# CC = gcc
+TARGET = raycast
+TEST   = $(TARGET)_test
 
 # Compiling flags here
-CFLAGS = -std=c99 -O3 -Wall -I. -mavx2 -mfma
+CFLAGS = -std=c99 -O3 -Wall -mavx2 -mfma
+LFLAGS = -lm
 
-# Archiving command
+# Commands
+MD = mkdir -p
+RM = rm -f
 AR = ar rcs
 
 # File extensions
-SRCEXT  = c
-INCLEXT = h
-OBJEXT  = o 
+SRCEXT = c
+INCEXT = h
+OBJEXT = o 
+LIBEXT = a
+SOEXT  = so
 
 # Directories
-ROOTDIR = ../..
-SRCDIR  = $(ROOTDIR)/src
-INCLDIR = $(ROOTDIR)/include
-TSTDIR  = $(ROOTDIR)/test
-LIBDIR  = bin
-OBJDIR  = obj
-BINDIR  = bin
+ROTDIR = ../..
+SRCDIR = $(ROTDIR)/src
+INCDIR = $(ROTDIR)/include
+TSTDIR = $(ROTDIR)/test
+LIBDIR = lib
+OBJDIR = obj
+BINDIR = bin
 
-SOEXT   = so
-LIBEXT  = a
+TESTS    := $(wildcard $(TSTDIR)/*.$(SRCEXT))
+SOURCES  := $(wildcard $(SRCDIR)/*.$(SRCEXT))
+INCLUDES := $(wildcard $(INCDIR)/*.$(INCLEXT))
+TSTOBJS  := $(TESTS:$(TSTDIR)/%.$(SRCEXT)=$(OBJDIR)/%.$(OBJEXT))
+SRCOBJS  := $(SOURCES:$(SRCDIR)/%.$(SRCEXT)=$(OBJDIR)/%.$(OBJEXT))
 
-SOURCES  := $(filter-out ./$(TEST).$(SRCEXT), $(wildcard $(SRCDIR)/*.$(SRCEXT)))
-INCLUDES := $(wildcard $(INCLDIR)/*.$(INCLEXT))
-OBJECTS  := $(SOURCES:$(SRCDIR)/%.$(SRCEXT)=$(OBJDIR)/%.$(OBJEXT))
-rm       = rm -f
+# Names
+SONAME  = lib$(TARGET).$(SOEXT)
+LIBNAME = lib$(TARGET).$(LIBEXT)
 
-# Linking flags here
-LFLAGS =  -lm
+lib: $(SRCOBJS)
+	@$(CC) -shared -Wl,-soname,$(SONAME) -o $(LIBDIR)/$(SONAME) $^ -lc $(LFLAGS)
+	@$(AR) $(LIBDIR)/$(LIBNAME) $(SRCOBJS)
+	@echo $(LIBNAME)": Static Library Archived!"
+	@echo $(SONAME)": Shared Object Archived!"
 
-$(LIBDIR)/$(NIXTARGET).$(SOEXT): $(OBJECTS)
-	@$(CC) -shared -Wl,-soname,$(LIBDIR)/$(NIXTARGET).$(SOEXT) -o $@ $^ -lc -L. $(LFLAGS)
-	@echo $(LIBDIR)/$(NIXTARGET).$(SOEXT)": Shared Object Archived!"
-
-$(OBJECTS): $(OBJDIR)/%.$(OBJEXT) : $(SRCDIR)/%.$(SRCEXT)
-	@$(CC) $(CFLAGS) -c $< -fPIC -o $@ -I$(INCLDIR)/
-	@echo $(NIXTARGET)": Compiled "$<" successfully!"
-
-.PHONY: static
-
-static: $(OBJECTS)
-	@$(AR) $(LIBDIR)/$(NIXTARGET).$(LIBEXT) $(OBJECTS)
-	@echo $(LIBDIR)/$(NIXTARGET).$(LIBEXT)": Static Library archived!"
-
-.PHONY: test
-
-test:
-	@$(CC) $(CFLAGS) -o $(BINDIR)/$(TEST) $(TSTDIR)/$(TEST).$(SRCEXT) -L. $(LIBDIR)/$(NIXTARGET).$(SOEXT) $(LFLAGS) -I $(INCLDIR)/
-	./$(BINDIR)/$(TEST)
-
-.PHONY: clean
+$(SRCOBJS): $(OBJDIR)/%.$(OBJEXT) : $(SRCDIR)/%.$(SRCEXT)
+	@$(CC) $(CFLAGS) -fPIC -I$(INCDIR) -c $< -o $@
+	@echo $(TARGET)": Compiled "$<" successfully!"
 
 clean:
-	@$(rm) $(OBJDIR)/*
-	@$(rm) $(LIBDIR)/*
-	@$(rm) $(BINDIR)/*
-
+	@$(RM) $(OBJDIR)/*
+	@$(RM) $(LIBDIR)/*
+	@$(RM) $(BINDIR)/*
 	@echo "Cleanup complete!"
 
+setup:
+	@$(MD) $(BINDIR)
+	@$(MD) $(OBJDIR)
+	@$(MD) $(LIBDIR)
 
-.PHONY: build
-
-build:
+rebuild:
 	@make clean
-	@mkdir -p $(BINDIR)
-	@mkdir -p $(OBJDIR)
-	@mkdir -p $(LIBDIR)
-	@make
-	@make static
-
-.PHONY: all
+	@make setup
+	@make lib
 	
-all:
-	@make build
-	@make test
+test: $(TSTOBJS)
+	@make rebuild
+	@$(CC) -L$(LIBDIR) -Wl,-rpath=$(LIBDIR) $(CFLAGS) -o $(BINDIR)/$(TEST) $(TSTDIR)/$(TEST).$(SRCEXT) -l$(TARGET) $(LFLAGS) -I$(INCDIR)
+	./$(BINDIR)/$(TEST)
+
+$(TSTOBJS): $(OBJDIR)/%.$(OBJEXT) : $(TSTDIR)/%.$(SRCEXT)
+	@$(CC) $(CFLAGS) -fPIC -I$(INCDIR) -c $< -o $@
+	@echo $(TARGET)": Compiled "$<" successfully!"

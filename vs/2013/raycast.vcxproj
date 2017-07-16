@@ -19,10 +19,8 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\include\implementation.h" />
-    <ClInclude Include="..\..\include\intrinsic.h" />
-    <ClInclude Include="..\..\include\native.h" />
     <ClInclude Include="..\..\include\raycast.h" />
+    <ClInclude Include="..\..\src\implementation.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\sphere.c" />

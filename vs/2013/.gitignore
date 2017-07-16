@@ -1,3 +1,5 @@
 # VS Build
 bin/
 obj/
+!build.cmd
+!build_single.cmd

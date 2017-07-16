@@ -3,9 +3,35 @@
 
 // Use Native C or Intinsics
 #if 1
-	#include "intrinsic.h"
+	// AVX2 + FMA Intrinsics
+	#include <immintrin.h>
+
+	// 256 bit Intrinsic (64 bit double by 4)
+	typedef __m256d Vector3;
+	typedef __m256d Vector4;
+
+	// Vector Accessors (platform dependent)
+	#if defined(_MSC_VER)
+		#define X(v) v.m256d_f64[0]
+		#define Y(v) v.m256d_f64[1]
+		#define Z(v) v.m256d_f64[2]
+		#define T(v) v.m256d_f64[3]
+	#elif defined(__GNUC__)
+		#define X(v) v[0]
+		#define Y(v) v[1]
+		#define Z(v) v[2]
+		#define T(v) v[3]
+	#endif
 #else
-	#include "native.h"
+	// 256 bit Intrinsic (64 bit double by 4)
+	typedef struct Vector3 { double data[3]; } Vector3;
+	typedef struct Vector4 { double data[4]; } Vector4;
+
+	// Vector Accessors (platform independent)
+	#define X(v) v.data[0]
+	#define Y(v) v.data[1]
+	#define Z(v) v.data[2]
+	#define T(v) v.data[3]
 #endif
 
 // ----------------------------------------

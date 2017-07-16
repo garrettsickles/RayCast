@@ -1,8 +1,6 @@
 #ifndef _IMPLEMENTATION_H_
 #define _IMPLEMENTATION_H_
 
-#include "raycast.h"
- 
 #include <math.h>
 #include <float.h>
 #include <stdint.h>
