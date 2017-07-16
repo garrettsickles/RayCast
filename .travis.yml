@@ -11,4 +11,4 @@ matrix:
 
 script:
   - cd unix/gcc
-  - make lib CC=$COMPILER
+  - make rebuild CC=$COMPILER

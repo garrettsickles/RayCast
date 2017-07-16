@@ -59,8 +59,8 @@ setup:
 	@$(MD) $(LIBDIR)
 
 rebuild:
-	@make clean
 	@make setup
+	@make clean
 	@make lib
 	
 test: $(TSTOBJS)
