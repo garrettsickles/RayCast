@@ -77,8 +77,6 @@ build:
 	@make
 	@make static
 
-	.PHONY: build
-
 .PHONY: all
 	
 all:
