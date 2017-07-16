@@ -4,7 +4,7 @@ TEST      = $(TARGET)_test
 NIXTARGET = lib$(TARGET)
 
 # Compiler
-CC = gcc
+# CC = gcc
 
 # Compiling flags here
 CFLAGS = -std=c99 -O3 -Wall -I. -mavx2 -mfma
