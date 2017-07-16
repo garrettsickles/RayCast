@@ -11,4 +11,4 @@ matrix:
 
 script:
   - cd unix/gcc
-  - make build CC=$COMPILER
+  - make lib CC=$COMPILER
