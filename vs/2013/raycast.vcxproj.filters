@@ -15,6 +15,12 @@
     <ClInclude Include="..\..\include\implementation.h">
       <Filter>include</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\include\intrinsic.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\native.h">
+      <Filter>include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\sphere.c">

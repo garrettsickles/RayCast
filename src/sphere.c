@@ -49,7 +49,7 @@ RAYCAST_FUNCTION(RAY_INTO_SPHERE)(Vector4 origin, Vector4 direction, Vector4 sph
 
 	time = time / T(dv);
 
-	// Calculate intersection
+	// Compute intersection
 	intersection = _mm256_fmadd_pd(direction, _mm256_set1_pd(time), origin);
 	T(intersection) = time;
 

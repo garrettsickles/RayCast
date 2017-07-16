@@ -7,7 +7,7 @@ NIXTARGET = lib$(TARGET)
 CC = gcc
 
 # Compiling flags here
-CFLAGS = -std=c99 -O3 -Wall -I. -mavx -mfma
+CFLAGS = -std=c99 -O3 -Wall -I. -mavx2 -mfma
 
 # Archiving command
 AR = ar rcs

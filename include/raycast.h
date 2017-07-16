@@ -1,8 +1,12 @@
-#ifndef _RAY_H_
-#define _RAY_H_
+#ifndef _RAYCAST_H_
+#define _RAYCAST_H_
 
-// AVX2 + FMA Intrinsics
-#include <immintrin.h>
+// Use Native C or Intinsics
+#if 1
+	#include "intrinsic.h"
+#else
+	#include "native.h"
+#endif
 
 // ----------------------------------------
 //             API DEFINITIONS
@@ -22,24 +26,6 @@
 // Function builder
 #define RAYCAST_FUNCTION(fn) Vector4 fn
 #define RAYCAST_API(fn) extern RAYCAST_SHARED_EXPORT RAYCAST_FUNCTION(fn)
-
-// 256 bit Intrinsic (64 bit double by 4)
-typedef __m256d Vector3;
-typedef __m256d Vector4;
-
-// Vector Accessors (platform dependent)
-#if defined(_MSC_VER)
-	#define X(v) v.m256d_f64[0]
-	#define Y(v) v.m256d_f64[1]
-	#define Z(v) v.m256d_f64[2]
-	#define T(v) v.m256d_f64[3]
-#elif defined(__GNUC__)
-	#define X(v) v[0]
-	#define Y(v) v[1]
-	#define Z(v) v[2]
-	#define T(v) v[3]
-#endif
-
 
 // ----------------------------------------
 //              API FUNCTIONS
@@ -89,13 +75,13 @@ RAYCAST_API(RAY_INTO_SPHERE)(Vector3 origin, Vector3 direction, Vector4 sphere);
 //         3D location of the B vertex (T parameter currently unused)
 //     vertex_c:
 //         3D location of the C vertex (T parameter currently unused)
-//     backface_cull:
-//         Flag specifying backface culling intersection with the triangle
+//     cull_backface:
+//         Flag specifying backface culling intersection with the triangle (False: Use Backface, True: Cull Backface)
 //
 // Output:
 //     intersection:
 //         3D intersection of the ray and triangle (T parameter as time scaled by length of direction)
 //
-RAYCAST_API(RAY_INTO_TRIANGLE)(Vector3 origin, Vector3 direction, Vector3 vertex_a, Vector3 vertex_b, Vector3 vertex_c, int backface_cull);
+RAYCAST_API(RAY_INTO_TRIANGLE)(Vector3 origin, Vector3 direction, Vector3 vertex_a, Vector3 vertex_b, Vector3 vertex_c, int cull_backface);
 
 #endif
