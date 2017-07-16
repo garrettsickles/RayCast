@@ -10,8 +10,9 @@ Run makefile located in 'unix/gcc' directory
 
 ```
 cd unix/gcc
-make all
+make all CC=$(COMPILER)
 ```
+where `$COMPILER` is at least **`gcc-4.8`** or newer
 
 
 ### Windows
