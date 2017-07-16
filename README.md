@@ -5,7 +5,7 @@
 ### [**Current Release - v1.0.0**](https://github.com/garrettsickles/RayCast/releases/tag/v1.0.0)
 ## Example
 
-The first step to using RayCast is to include `raycast.h`. This is the only file needed to use the library.
+The first step to using RayCast is to include [`raycast.h`](https://github.com/garrettsickles/RayCast/blob/master/include/raycast.h). This is the only file needed to use the library.
 
 A simple program using the RayCast library could look like this
 ```C
