@@ -67,13 +67,20 @@ clean:
 	@echo "Cleanup complete!"
 
 
-.PHONY: all
+.PHONY: build
 
-all:
+build:
 	@make clean
 	@mkdir -p $(BINDIR)
 	@mkdir -p $(OBJDIR)
 	@mkdir -p $(LIBDIR)
 	@make
 	@make static
+
+	.PHONY: build
+
+.PHONY: all
+	
+all:
+	@make build
 	@make test
