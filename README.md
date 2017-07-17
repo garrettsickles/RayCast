@@ -45,6 +45,35 @@ Intersection: <0.577350, 0.577350, 0.577350, 0.422650>
 
 ## API
 
+### Data Objects
+| Object | Description |
+| --- | --- |
+| `Vector3` | A type containing three orthogonal coordinates |
+| `Vector4` | A type containing three orthogonal coordinates and one miscellaneous scalar |
+
+### [Ray-Sphere Intersection](https://github.com/garrettsickles/RayCast/blob/master/src/sphere.c)
+| Parameter | Description |
+| --- | --- |
+| `Vector3 origin` |  Orthogonal coordinates of the beginning of the ray |
+| `Vector3 direction` | Orthogonal vector indicating positive direction of travel |
+| `Vector4 sphere` |  Orthogonal coordinates of the center of the sphere with the radius appended |
+```C
+Vector4 RayIntoSphere(Vector3 origin, Vector3 direction, Vector4 sphere)
+```
+
+### [Ray-Triangle Intersection](https://github.com/garrettsickles/RayCast/blob/master/src/triangle.c)
+| Parameter | Description |
+| --- | --- |
+| `Vector3 origin` |  Orthogonal coordinates of the beginning of the ray |
+| `Vector3 direction` | Orthogonal vector indicating positive direction of travel |
+| `Vector3 a` |  Orthogonal coordinates of triangle vertex a |
+| `Vector3 b` |  Orthogonal coordinates of triangle vertex b |
+| `Vector3 c` |  Orthogonal coordinates of triangle vertex b |
+| `int cull` |  Flag specifying whether to cull the backface intersection |
+```C
+Vector4 RayIntoTriangle(Vector3 origin, Vector3 direction, Vector3 a, Vector3 b, Vector3 c, int cull)
+```
+
 ## Build
 
 ### GCC
