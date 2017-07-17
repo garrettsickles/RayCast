@@ -83,7 +83,7 @@ Vector4 RayIntoTriangle(Vector3 origin, Vector3 direction, Vector3 a, Vector3 b,
 | `Vector3 normal` |  Vector in same direction as plane normal |
 | `int cull` |  Flag specifying whether to cull the backface intersection |
 ```C
-Vector4 RayIntoTriangle(Vector3 origin, Vector3 direction, Vector3 vertex, Vector3 normal, int cull)
+Vector4 RayIntoPlane(Vector3 origin, Vector3 direction, Vector3 vertex, Vector3 normal, int cull)
 ```
 
 ## Build
