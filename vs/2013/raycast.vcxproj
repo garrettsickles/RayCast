@@ -23,6 +23,7 @@
     <ClInclude Include="..\..\src\implementation.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\src\plane.c" />
     <ClCompile Include="..\..\src\sphere.c" />
     <ClCompile Include="..\..\src\triangle.c" />
   </ItemGroup>
@@ -96,7 +97,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>WIN64;_MBCS;_CRT_SECURE_NO_WARNINGS;RAYCAST_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN64;_MBCS;_CRT_SECURE_NO_WARNINGS;_RAYCAST_DLL_;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <CompileAs>CompileAsC</CompileAs>
       <AdditionalIncludeDirectories>..\..\include</AdditionalIncludeDirectories>
       <EnableEnhancedInstructionSet>AdvancedVectorExtensions2</EnableEnhancedInstructionSet>
@@ -131,7 +132,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>WIN64;_MBCS;_CRT_SECURE_NO_WARNINGS;RAYCAST_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN64;_MBCS;_CRT_SECURE_NO_WARNINGS;_RAYCAST_DLL_;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <CompileAs>CompileAsC</CompileAs>
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
       <AdditionalIncludeDirectories>..\..\include</AdditionalIncludeDirectories>

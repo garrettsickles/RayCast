@@ -1,14 +1,14 @@
 #include "implementation.h"
 #include "raycast.h"
 
-RAYCAST_FUNCTION(RAY_INTO_TRIANGLE)(Vector3 origin, Vector3 direction, Vector3 vertex_a, Vector3 vertex_b, Vector3 vertex_c, int cull_backface)
+RAYCAST_FUNCTION(RAY_INTO_TRIANGLE)(Vector3 origin, Vector3 direction, Vector3 a, Vector3 b, Vector3 c, int cull)
 {
 	double determinant, u, v, time;
 	Vector4 edge[2], pv, tv, uv, qv, vv, determinantv, intersection;
 	
 	// Edge vectors going to Vertex A
-	edge[0] = _mm256_sub_pd(vertex_b, vertex_a);
-	edge[1] = _mm256_sub_pd(vertex_c, vertex_a);
+	edge[0] = _mm256_sub_pd(b, a);
+	edge[1] = _mm256_sub_pd(c, a);
 
 	// direction x edge[1]
 	pv = _mm256_permute4x64_pd
@@ -23,13 +23,13 @@ RAYCAST_FUNCTION(RAY_INTO_TRIANGLE)(Vector3 origin, Vector3 direction, Vector3 v
 	determinantv = _mm256_mul_pd(edge[0], pv);
 	determinant = X(determinantv) + Y(determinantv) + Z(determinantv);
 
-	if (determinant < RAYCAST_EPSILON_POS && (cull_backface == 1  || determinant > RAYCAST_EPSILON_NEG))
+	if (determinant < RAYCAST_EPSILON_POS && (cull == 1  || determinant > RAYCAST_EPSILON_NEG))
 	{
 		return _mm256_load_pd(NO_INTERSECT);
 	}
 	
 	// Displacement from Origin to Vertex A
-	tv = _mm256_mul_pd(_mm256_sub_pd(origin, vertex_a), _mm256_set1_pd(1.0 / determinant));
+	tv = _mm256_mul_pd(_mm256_sub_pd(origin, a), _mm256_set1_pd(1.0 / determinant));
 
 	// Compute U parameter
 	uv = _mm256_mul_pd(tv, pv);
@@ -64,11 +64,13 @@ RAYCAST_FUNCTION(RAY_INTO_TRIANGLE)(Vector3 origin, Vector3 direction, Vector3 v
 	tv = _mm256_mul_pd(edge[1], qv);
 	time = (X(tv) + Y(tv) + Z(tv));
 
-	// No backwards rays, otherwise this is a line triangle detection algorithm
-	if (time < 0.0)
-	{
-		return _mm256_load_pd(NO_INTERSECT);
-	}
+	#if defined(_RAYCAST_CULL_BACKSHOOT_)
+		// No backwards rays, otherwise this is a line intersection algorithm
+		if (time < 0.0)
+		{
+			return _mm256_load_pd(NO_INTERSECT);
+		}
+	#endif
 	
 	// Compute intersection
 	intersection = _mm256_fmadd_pd(direction, _mm256_set1_pd(time), origin);
