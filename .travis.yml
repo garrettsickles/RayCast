@@ -10,5 +10,6 @@ matrix:
       env: COMPILER=gcc-4.8
 
 script:
-  - cd unix/gcc
-  - make rebuild CC=$COMPILER
+  - cd unix
+  - make setup CC=$COMPILER
+  - make test CC=$COMPILER
