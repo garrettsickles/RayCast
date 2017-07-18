@@ -97,7 +97,12 @@ Run the makefile located in the `unix/gcc` directory with the parameter `CC` set
 
 First:
 ```
-cd unix/gcc
+cd unix
+```
+
+All at once:
+```
+./build.sh
 ```
 
 From Scratch:
@@ -116,7 +121,7 @@ Tests:
 make test CC=$(COMPILER)
 ```
 
-where `COMPILER` is at least **`gcc-4.8`** or newer
+where `COMPILER` is at least **`gcc-4.8`**, **`clang-3.4`**, or newer
 
 
 ### Windows

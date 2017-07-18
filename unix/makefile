@@ -19,13 +19,14 @@ LIBEXT = a
 SOEXT  = so
 
 # Directories
-ROTDIR = ../..
+ROTDIR = ..
 SRCDIR = $(ROTDIR)/src
 INCDIR = $(ROTDIR)/include
 TSTDIR = $(ROTDIR)/test
-LIBDIR = lib
-OBJDIR = obj
-BINDIR = bin
+CCDIR  = $(CC)
+LIBDIR = $(CC)/lib
+OBJDIR = $(CC)/obj
+BINDIR = $(CC)/bin
 
 TESTS    := $(wildcard $(TSTDIR)/*.$(SRCEXT))
 SOURCES  := $(wildcard $(SRCDIR)/*.$(SRCEXT))
@@ -54,17 +55,18 @@ clean:
 	@echo "Cleanup complete!"
 
 setup:
+	@$(MD) $(CCDIR)
 	@$(MD) $(BINDIR)
 	@$(MD) $(OBJDIR)
 	@$(MD) $(LIBDIR)
 
 rebuild:
-	@make setup
-	@make clean
-	@make lib
+	@make setup CC=$(CC)
+	@make clean CC=$(CC)
+	@make lib CC=$(CC)
 	
 test: $(TSTOBJS)
-	@make rebuild
+	@make rebuild CC=$(CC)
 	@$(CC) -L$(LIBDIR) -Wl,-rpath=$(LIBDIR) $(CFLAGS) -o $(BINDIR)/$(TEST) $(TSTDIR)/$(TEST).$(SRCEXT) -l$(TARGET) $(LFLAGS) -I$(INCDIR)
 	./$(BINDIR)/$(TEST)
 

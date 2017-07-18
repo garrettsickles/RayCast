@@ -1,0 +1,1 @@
+make setup CC=gcc-4.8 && make test CC=gcc-4.8
