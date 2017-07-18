@@ -11,5 +11,4 @@ matrix:
 
 script:
   - cd unix
-  - make setup CC=$COMPILER
-  - make test CC=$COMPILER
+  - make rebuild CC=$COMPILER
