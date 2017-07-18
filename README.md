@@ -5,7 +5,7 @@
 ## Status
 | **MSVC** | **GCC** | Binaries|
 | -- | -- | -- |
-| [![Build status: MSVC](https://ci.appveyor.com/api/projects/status/9c7uo3xxyguplf07?svg=true)](https://ci.appveyor.com/project/garrettsickles/raycast) | [![Build Status: GCC](https://travis-ci.org/garrettsickles/RayCast.svg?branch=master)](https://travis-ci.org/garrettsickles/RayCast) | [**v1.1.0**](https://github.com/garrettsickles/RayCast/releases/tag/v1.1.0) |
+| [![Build status: MSVC](https://ci.appveyor.com/api/projects/status/9c7uo3xxyguplf07?svg=true)](https://ci.appveyor.com/project/garrettsickles/raycast) | [![Build Status: GCC](https://travis-ci.org/garrettsickles/RayCast.svg?branch=master)](https://travis-ci.org/garrettsickles/RayCast) | [**v1.1.1**](https://github.com/garrettsickles/RayCast/releases/tag/v1.1.1) |
 
 ## Example
 
