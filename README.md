@@ -1,8 +1,12 @@
-# RayCast  [![Build status: MSVC](https://ci.appveyor.com/api/projects/status/9c7uo3xxyguplf07?svg=true)](https://ci.appveyor.com/project/garrettsickles/raycast) [![Build Status: GCC](https://travis-ci.org/garrettsickles/RayCast.svg?branch=master)](https://travis-ci.org/garrettsickles/RayCast)
+# RayCast
 
-3D Ray casting in C using AVX2 and FMA intruction sets
+**3D Ray casting in C using AVX2 and FMA intruction sets**
 
-### [**Current Release - v1.1.0**](https://github.com/garrettsickles/RayCast/releases/tag/v1.1.0)
+## Status
+| **MSVC** | **GCC** | Binaries|
+| -- | -- | -- |
+| [![Build status: MSVC](https://ci.appveyor.com/api/projects/status/9c7uo3xxyguplf07?svg=true)](https://ci.appveyor.com/project/garrettsickles/raycast) | [![Build Status: GCC](https://travis-ci.org/garrettsickles/RayCast.svg?branch=master)](https://travis-ci.org/garrettsickles/RayCast) | [**v1.1.0**](https://github.com/garrettsickles/RayCast/releases/tag/v1.1.0) |
+
 ## Example
 
 The first step to using RayCast is to include [`raycast.h`](https://github.com/garrettsickles/RayCast/blob/master/include/raycast.h). This is the only file needed to use the library.
