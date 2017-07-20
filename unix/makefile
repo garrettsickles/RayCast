@@ -21,7 +21,7 @@ SOEXT  = so
 # Directories
 ROTDIR = ..
 SRCDIR = $(ROTDIR)/src
-INCDIR = $(ROTDIR)/include
+INCDIR = $(ROTDIR)
 TSTDIR = $(ROTDIR)/test
 CCDIR  = $(CC)
 LIBDIR = $(CC)/lib

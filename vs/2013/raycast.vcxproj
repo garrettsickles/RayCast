@@ -19,7 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\include\raycast.h" />
+    <ClInclude Include="..\..\raycast.h" />
     <ClInclude Include="..\..\src\implementation.h" />
   </ItemGroup>
   <ItemGroup>
